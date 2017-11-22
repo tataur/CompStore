@@ -1,0 +1,54 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/bootstrap.css")
+    @Scripts.Render("~/scripts/modernizr-2.6.1.js")
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .navbar-right {
+            float: right !important;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row panel">
+        <div class="navbar navbar-inverse" role="navigation">
+            <a class="navbar-brand" href="#">
+                <span class="hidden-xs">Mr.Comp - компьютерный магазин</span>
+                <div class="visible-xs">Mr.Comp</div>
+            </a>
+            @*@Html.Action("Summary", "Cart")*@
+        </div>
+
+        <div class="visible-xs">
+            @*@Html.Action("MenuMobile", "Navigation", new { isHorizontal = true })*@
+        </div>
+
+        <div class="row panel">
+            <div id="categories" class="col-xs-3 hidden-xs">
+                @*@Html.Action("Menu", "Navigation")*@
+            </div>
+            <div class="col-xs-12 col-xs-8">
+                @RenderBody()
+            </div>
+
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/scripts/bootstrap.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
