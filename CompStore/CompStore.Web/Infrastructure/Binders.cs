@@ -3,7 +3,7 @@ using CompStore.Domain.Entities;
 
 namespace CompStore.Web.Infrastructure.Binders
 {
-    public class CartModelBinder : IModelBinder
+    public class BasketModelBinder : IModelBinder
     {
         private const string sessionKey = "ShoppingList";
 

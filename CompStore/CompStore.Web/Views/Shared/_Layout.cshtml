@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/bootstrap.css")
-    @Scripts.Render("~/scripts/modernizr-2.6.1.js")
+    @Scripts.Render("~/scripts/modernizr-2.6.2.js")
     <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
     <style>
@@ -25,26 +25,26 @@
                 <span class="hidden-xs">Mr.Comp - компьютерный магазин</span>
                 <div class="visible-xs">Mr.Comp</div>
             </a>
-            @*@Html.Action("Summary", "Cart")*@
+            @Html.Action("Summary", "Basket")
         </div>
 
         <div class="visible-xs">
-            @*@Html.Action("MenuMobile", "Navigation", new { isHorizontal = true })*@
+            @* @Html.Action("MenuMobile", "Navigation", new { isHorizontal = true })*@
         </div>
 
-        <div class="row panel">
+        <div class="panel col-xs-11">
             <div id="categories" class="col-xs-3 hidden-xs">
-                @*@Html.Action("Menu", "Navigation")*@
+                @Html.Action("Menu", "Navigation")
             </div>
-            <div class="col-xs-12 col-xs-8">
+            <div class="col-xs-9">
                 @RenderBody()
             </div>
 
         </div>
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        @*<footer class="panel-footer">
+            <p>&copy; @DateTime.Now.Year - Mr.Comp</p>
+        </footer>*@
     </div>
 
     @Scripts.Render("~/scripts/jquery-1.10.2.js")

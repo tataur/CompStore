@@ -1,0 +1,22 @@
+﻿
+@model CompStore.Domain.Entities.ShoppingList
+
+<div class="navbar-right hidden-xs">
+    @if (Model.ComputeTotalValue() != 0)
+    {
+        @Html.ActionLink("Заказать", "Index", "Basket", new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn-default navbar-btn" })
+    }
+</div>
+
+<div class="navbar-right visible-xs">
+    <a href=@Url.Action("Index", "Basket", new { returnUrl = Request.Url.PathAndQuery })
+       class="btn btn-default navbar-btn">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+    </a>
+</div>
+
+<div class="navbar-text navbar-right">
+    <b class="hidden-xs">Корзина</b>
+    @if (Model.ComputeTotalValue() != 0)
+    { @Model.ComputeTotalValue().ToString("# руб") }
+</div>

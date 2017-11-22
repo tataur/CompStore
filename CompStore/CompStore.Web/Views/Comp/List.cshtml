@@ -11,19 +11,19 @@
 {
     @Html.Partial("CompSummary", p)
     @*<div class="well">
-            <h3>
-                <strong>@p.Name</strong>
-                <span class="pull-right label label-primary">@p.Price.ToString("# руб")</span>
-            </h3>
-            @using (Html.BeginForm("AddToCart", "Cart"))
-            {
-                <div class="pull-right">
-                    @Html.HiddenFor(x => x.CompId)
+        <h3>
+            <strong>@p.Name</strong>
+            <span class="pull-right label label-primary">@p.Price.ToString("# руб")</span>
+        </h3>
+        @using (Html.BeginForm("AddToList", "Basket"))
+        {
+            <div class="pull-right">
+                @Html.HiddenFor(x => x.CompId)
 
-                </div>
-            }
-            <span class="lead">@p.Description</span>
-        </div>*@
+            </div>
+        }
+        <span class="lead">@p.Description</span>
+    </div>*@
 }
 
 <div class="btn-group pull-right">

@@ -1,0 +1,33 @@
+﻿@model CompStore.Domain.Entities.DeliveryDetails
+
+@{
+    ViewBag.Title = "форма заказа";
+}
+
+<h2>Оформить заказ</h2>
+<p>Введите Ваши контактные данные, для отправки товара</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary();
+    <h3>Данные</h3>
+    <div class="form-group">
+        <label>Имя:</label>
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+        <label>Фамилия:</label>
+        @Html.TextBoxFor(x => x.SecondName, new { @class = "form-control" })
+        <label>Email:</label>
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        <label>Телефон:</label>
+        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+    </div>
+
+    <h3>Адрес доставки</h3>
+    <div class="form-group">
+        <label>Страна:</label>
+        @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+        <label>Город:</label>
+        @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+    </div>
+
+}
