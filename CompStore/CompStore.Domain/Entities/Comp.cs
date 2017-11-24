@@ -25,5 +25,9 @@ namespace CompStore.Domain.Entities
         [Display(Name = "Цена (руб)")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для цены")]
         public decimal Price { get; set; }
+
+        [Display(Name = "Количество")]
+        [HiddenInput(DisplayValue = false)]
+        public int Quantity { get; set; }
     }
 }

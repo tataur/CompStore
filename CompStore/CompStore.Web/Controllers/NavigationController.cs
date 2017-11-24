@@ -2,14 +2,15 @@
 using CompStore.Domain.Abstract;
 using System.Collections.Generic;
 using System.Linq;
+using CompStore.Domain.Entities;
 
 namespace CompStore.Web.Controllers
 {
     public class NavigationController : Controller
     {
-        private ICompRepository repository;
+        private ICommonRepository<Comp> repository;
 
-        public NavigationController(ICompRepository repo)
+        public NavigationController(ICommonRepository<Comp> repo)
         {
             repository = repo;
         }
@@ -18,14 +19,14 @@ namespace CompStore.Web.Controllers
         {
             ViewBag.SelectedCategory = category;
 
-            IEnumerable<string> categories = repository.Computers.Select(comp => comp.Category).Distinct().OrderBy(c => c);
+            IEnumerable<string> categories = repository.Items.Select(comp => comp.Category).Distinct().OrderBy(c => c);
             return PartialView(categories);
         }
 
         public PartialViewResult MenuMobile(string category = null, bool isHorizontal = true)
         {
             ViewBag.SelectedCategory = category;
-            IEnumerable<string> categories = repository.Computers
+            IEnumerable<string> categories = repository.Items
                 .Select(comp => comp.Category)
                 .Distinct()
                 .OrderBy(x => x);

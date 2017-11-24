@@ -48,13 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ICompRepository.cs" />
+    <Compile Include="Abstract\ICommonRepository.cs" />
     <Compile Include="Abstract\IOrderHandler.cs" />
     <Compile Include="Concrete\EFCompRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Concrete\EFDeliveryRepository.cs" />
+    <Compile Include="Concrete\EFOrderRepository.cs" />
     <Compile Include="Concrete\EmailOrderHandler.cs" />
     <Compile Include="Entities\Comp.cs" />
     <Compile Include="Entities\DeliveryDetails.cs" />
+    <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\ShoppingList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,11 +4,11 @@ using CompStore.Domain.Abstract;
 
 namespace CompStore.Domain.Concrete
 {
-    public class EFCompRepository : ICompRepository
+    public class EFCompRepository : ICommonRepository<Comp>
     {
         EFDbContext context = new EFDbContext();
 
-        public IEnumerable<Comp> Computers
+        public IEnumerable<Comp> Items
         {
             get { return context.Computers; }
         }
@@ -33,7 +33,7 @@ namespace CompStore.Domain.Concrete
             }
         }
 
-        public Comp DeleteComp(int compId)
+        public Comp Delete(int compId)
         {
             Comp dbEntry = context.Computers.Find(compId);
             if (dbEntry != null)

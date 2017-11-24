@@ -5,18 +5,19 @@ using System.Linq;
 
 namespace CompStore.Web.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
-        ICompRepository repository;
+        ICommonRepository<Comp> repository;
 
-        public AdminController(ICompRepository repo)
+        public AdminController(ICommonRepository<Comp> repo)
         {
             repository = repo;
         }
 
         public ViewResult Index()
         {
-            return View(repository.Computers);
+            return View(repository.Items);
         }
 
         public ViewResult Create()
@@ -26,7 +27,7 @@ namespace CompStore.Web.Controllers
 
         public ViewResult Edit(System.Guid compId)
         {
-            Comp comp = repository.Computers.FirstOrDefault(c => c.CompId == compId);
+            Comp comp = repository.Items.FirstOrDefault(c => c.CompId == compId);
             return View(comp);
         }
 
@@ -48,7 +49,7 @@ namespace CompStore.Web.Controllers
         [HttpPost]
         public ActionResult Delete(int compId)
         {
-            Comp deletedComp = repository.DeleteComp(compId);
+            Comp deletedComp = repository.Delete(compId);
             if (deletedComp != null)
             {
                 TempData["message"] = string.Format("Товар \"{0}\" был удален", deletedComp.Name);

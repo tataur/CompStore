@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CompStore.Domain.Entities
 {
     public class DeliveryDetails
     {
+        public Guid Id { get; set; }
+
         [Required(ErrorMessage = "Введите имя")]
         public string FirstName { get; set; }
 
@@ -24,5 +27,19 @@ namespace CompStore.Domain.Entities
 
         [Required(ErrorMessage = "Введите город")]
         public string City { get; set; }
+    }
+
+    public class OrderLine
+    {
+        public Guid Id { get; set; }
+        public Guid DeliveryDetailsId { get; set; }
+        public Guid CompId { get; set; }
+        public int Quantity { get; set; }
+        public OrderStatus Status { get; set; }
+    }
+
+    public enum OrderStatus
+    {
+        Wait, Work, WorkDone, Delivery, Done
     }
 }
