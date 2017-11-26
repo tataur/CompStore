@@ -1,12 +1,21 @@
 ﻿using CompStore.Domain.Entities;
+using CompStore.Domain.Concrete;
 
 namespace CompStore.Domain.Abstract
 {
     public interface IOrderHandler
     {
-        void HandleOrder(ShoppingList shoppingList, DeliveryDetails deliveryDetails);
+        // найти незанятого сборщика Worker (статус заказа Wait, сборщика Wait)
 
+        // передать заказ сборщику, изменить статус заказа и сборщика (статус заказа Work, сборщика Work)
 
-        void SendMessage(ShoppingList shoppingList, DeliveryDetails deliveryDetails);
+        // после сборки заказа изменить статус заказа и сборщика (статус заказа WorkDone, сборщика Wait)
+
+        // передать его в доставку Deliveryman (статус заказа Delivery, доставщика Work)
+
+        // после доставки изменить статус заказа и доставщика, (статус заказа Done, доставщика Wait) 
+
+        // отправить сообщение заказчику
+        void SendMessage(ProductList productList, DeliveryDetails deliveryDetails);
     }
 }

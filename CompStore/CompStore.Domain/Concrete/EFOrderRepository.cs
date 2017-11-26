@@ -8,7 +8,7 @@ namespace CompStore.Domain.Concrete
     {
         EFDbContext context = new EFDbContext();
 
-        public IEnumerable<OrderLine> Items
+        public IEnumerable<OrderLine> AllItems
         {
             get { return context.OrderLine; }
         }
@@ -34,7 +34,7 @@ namespace CompStore.Domain.Concrete
             }
         }
 
-        public OrderLine Delete(int orderId)
+        public OrderLine DeleteItem(int orderId)
         {
             OrderLine dbEntry = context.OrderLine.Find(orderId);
             if (dbEntry != null)

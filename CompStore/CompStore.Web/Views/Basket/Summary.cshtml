@@ -1,8 +1,8 @@
 ﻿
-@model CompStore.Domain.Entities.ShoppingList
+@model CompStore.Domain.Concrete.ProductList
 
 <div class="navbar-right hidden-xs">
-    @if (Model.ComputeTotalValue() != 0)
+    @if (Model.TotalValue() != 0)
     {
         @Html.ActionLink("Заказать", "Index", "Basket", new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn-default navbar-btn" })
     }
@@ -17,6 +17,6 @@
 
 <div class="navbar-text navbar-right">
     <b class="hidden-xs">Корзина</b>
-    @if (Model.ComputeTotalValue() != 0)
-    { @Model.ComputeTotalValue().ToString("# руб") }
+    @if (Model.TotalValue() != 0)
+    { @Model.TotalValue().ToString("# руб") }
 </div>

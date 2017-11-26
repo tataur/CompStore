@@ -4,11 +4,8 @@ using System.Web.Mvc;
 
 namespace CompStore.Domain.Entities
 {
-    public class Employee
+    public class Employee : CommonEntity
     {
-        [HiddenInput(DisplayValue = false)]
-        public Guid EmployeeId { get; set; }
-
         [Display(Name = "Имя")]
         [Required(ErrorMessage = "Пожалуйста, введите имя")]
         public string FirstName { get; set; }

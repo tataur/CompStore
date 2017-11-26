@@ -1,3 +1,4 @@
+C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\ApplicationInsights.config
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\CompStore.Web.dll.config
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\CompStore.Web.dll
@@ -31,7 +32,6 @@ C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\EntityFram
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\CompStore.Domain.pdb
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\CompStore.Domain.dll.config
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.Web.Common.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.Web.Common.WebHost.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.Web.Mvc.xml

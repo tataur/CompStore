@@ -55,10 +55,12 @@
     <Compile Include="Concrete\EFDeliveryRepository.cs" />
     <Compile Include="Concrete\EFOrderRepository.cs" />
     <Compile Include="Concrete\EmailOrderHandler.cs" />
+    <Compile Include="Entities\CommonEntity.cs" />
     <Compile Include="Entities\Comp.cs" />
     <Compile Include="Entities\DeliveryDetails.cs" />
     <Compile Include="Entities\Employee.cs" />
-    <Compile Include="Entities\ShoppingList.cs" />
+    <Compile Include="Concrete\ProductList.cs" />
+    <Compile Include="Entities\OrderLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

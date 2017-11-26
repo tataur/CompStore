@@ -20,4 +20,3 @@ C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Domain\bin\Debug\S
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Domain\obj\Debug\CompStore.Domain.csproj.CoreCompileInputs.cache
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Domain\obj\Debug\CompStore.Domain.dll
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Domain\obj\Debug\CompStore.Domain.pdb
-C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Domain\obj\Debug\CompStore.Domain.csprojResolveAssemblyReference.cache

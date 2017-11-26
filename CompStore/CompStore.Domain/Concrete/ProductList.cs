@@ -1,25 +1,26 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Collections.Generic;
+using CompStore.Domain.Entities;
 
-namespace CompStore.Domain.Entities
+namespace CompStore.Domain.Concrete
 {
-    public class ShoppingListLine
+    public class ProductListLine
     {
         public Comp Comp { get; set; }
         public int Quantity { get; set; }
     }
 
-    public class ShoppingList
+    public class ProductList
     {
-        private List<ShoppingListLine> lineCollection = new List<ShoppingListLine>();
+        private List<ProductListLine> lineCollection = new List<ProductListLine>();
 
         public void AddItem(Comp comp, int quantity)
         {
-            ShoppingListLine line = lineCollection.Where(c => c.Comp.CompId == comp.CompId).FirstOrDefault();
+            ProductListLine line = lineCollection.Where(c => c.Comp.Id == comp.Id).FirstOrDefault();
 
             if (line == null)
             {
-                lineCollection.Add(new ShoppingListLine
+                lineCollection.Add(new ProductListLine
                 {
                     Comp = comp,
                     Quantity = quantity
@@ -33,10 +34,10 @@ namespace CompStore.Domain.Entities
 
         public void RemoveLine(Comp comp)
         {
-            lineCollection.RemoveAll(l => l.Comp.CompId == comp.CompId);
+            lineCollection.RemoveAll(l => l.Comp.Id == comp.Id);
         }
 
-        public decimal ComputeTotalValue()
+        public decimal TotalValue()
         {
             return lineCollection.Sum(e => e.Comp.Price * e.Quantity);
 
@@ -46,9 +47,14 @@ namespace CompStore.Domain.Entities
             lineCollection.Clear();
         }
 
-        public IEnumerable<ShoppingListLine> Lines
+        public IEnumerable<ProductListLine> Lines
         {
             get { return lineCollection; }
+        }
+
+        public void AddToDB(OrderLine order, DeliveryDetails delivery)
+        {
+
         }
     }
 }

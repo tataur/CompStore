@@ -1,9 +1,5 @@
-﻿using CompStore.Domain.Entities;
+﻿using CompStore.Domain.Concrete;
 using CompStore.Web.Infrastructure.Binders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -18,7 +14,7 @@ namespace CompStore.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ModelBinders.Binders.Add(typeof(ShoppingList), new BasketModelBinder());
+            ModelBinders.Binders.Add(typeof(ProductList), new BasketModelBinder());
         }
     }
 }

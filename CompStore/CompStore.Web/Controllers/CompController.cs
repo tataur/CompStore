@@ -10,7 +10,7 @@ namespace CompStore.Web.Controllers
     public class CompController : Controller
     {
         private ICommonRepository<Comp> repository;
-        public int pageSize = 4;
+        public int pageSize = 5;
 
         public CompController(ICommonRepository<Comp> repo)
         {
@@ -21,16 +21,16 @@ namespace CompStore.Web.Controllers
         {
             CompListViewModel model = new CompListViewModel
             {
-                Computers = repository.Items
+                Computers = repository.AllItems
                 .Where(comp => comp.Category == null || comp.Category == category)
-                .OrderBy(comp => comp.CompId)
+                .OrderBy(comp => comp.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = category == null ? repository.Items.Count() : repository.Items.Where(comp => comp.Category == category).Count()
+                    TotalItems = category == null ? repository.AllItems.Count() : repository.AllItems.Where(comp => comp.Category == category).Count()
                 },
                 CurrentCategory = category
             };
@@ -39,7 +39,7 @@ namespace CompStore.Web.Controllers
 
         public ViewResult Details(Guid id)
         {
-            var model = repository.Items.FirstOrDefault(c => c.CompId == id);
+            var model = repository.AllItems.FirstOrDefault(c => c.Id == id);
 
             return View(model);
         }

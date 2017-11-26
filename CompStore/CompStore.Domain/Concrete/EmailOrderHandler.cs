@@ -1,5 +1,6 @@
 ﻿using CompStore.Domain.Abstract;
 using CompStore.Domain.Entities;
+using CompStore.Domain.Concrete;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
@@ -15,23 +16,7 @@ namespace CompStore.Domain.Concrete
             emailSettings = settings;
         }
 
-        public void HandleOrder(ShoppingList shoppingList, DeliveryDetails deliveryDetails)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        // найти незанятого сборщика Worker (статус заказа Wait, сборщика Wait)
-
-        // передать заказ сборщику, изменить статус заказа и сборщика (статус заказа Work, сборщика Work)
-
-        // после сборки заказа изменить статус заказа и сборщика (статус заказа WorkDone, сборщика Wait)
-
-        // передать его в доставку Deliveryman (статус заказа Delivery, доставщика Work)
-
-        // после доставки изменить статус заказа и доставщика, (статус заказа Done, доставщика Wait) 
-        
-        // отправить сообщение заказчику
-        public void SendMessage(ShoppingList shoppingList, DeliveryDetails deliveryDetails)
+        public void SendMessage(ProductList productList, DeliveryDetails deliveryDetails)
         {
             using (var mClient = new SmtpClient())
             {
@@ -53,13 +38,13 @@ namespace CompStore.Domain.Concrete
                     .AppendLine(" ")
                     .AppendLine("Товары:");
 
-                foreach (var line in shoppingList.Lines)
+                foreach (var line in productList.Lines)
                 {
                     var subtotal = line.Comp.Price * line.Quantity;
                     body.AppendFormat("{0} x {1} (Итого: {2:c})", line.Quantity, line.Comp.Name, subtotal);
                 }
 
-                body.AppendFormat("Общая стоимость: {0:c}", shoppingList.ComputeTotalValue())
+                body.AppendFormat("Общая стоимость: {0:c}", productList.TotalValue())
                     .AppendLine(" ")
                     .AppendLine("Доставка:")
                     .AppendLine(deliveryDetails.FirstName)
@@ -83,7 +68,6 @@ namespace CompStore.Domain.Concrete
                 mClient.Send(mailMessage);
             }
         }
-
     }
 
     public class EmailSettings

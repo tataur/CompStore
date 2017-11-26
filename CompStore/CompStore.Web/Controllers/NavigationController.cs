@@ -19,14 +19,14 @@ namespace CompStore.Web.Controllers
         {
             ViewBag.SelectedCategory = category;
 
-            IEnumerable<string> categories = repository.Items.Select(comp => comp.Category).Distinct().OrderBy(c => c);
+            IEnumerable<string> categories = repository.AllItems.Select(comp => comp.Category).Distinct().OrderBy(c => c);
             return PartialView(categories);
         }
 
         public PartialViewResult MenuMobile(string category = null, bool isHorizontal = true)
         {
             ViewBag.SelectedCategory = category;
-            IEnumerable<string> categories = repository.Items
+            IEnumerable<string> categories = repository.AllItems
                 .Select(comp => comp.Category)
                 .Distinct()
                 .OrderBy(x => x);

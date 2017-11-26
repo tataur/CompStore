@@ -8,7 +8,7 @@ namespace CompStore.Domain.Concrete
     {
         EFDbContext context = new EFDbContext();
 
-        public IEnumerable<DeliveryDetails> Items
+        public IEnumerable<DeliveryDetails> AllItems
         {
             get { return context.DeliveryDetails; }
         }
@@ -24,6 +24,7 @@ namespace CompStore.Domain.Concrete
                 DeliveryDetails dbEntry = context.DeliveryDetails.Find(delivery.Id);
                 if (dbEntry != null)
                 {
+                    dbEntry.FillCommonFields();
                     dbEntry.FirstName = delivery.FirstName;
                     dbEntry.SecondName = delivery.SecondName;
                     dbEntry.City = delivery.City;
@@ -36,7 +37,7 @@ namespace CompStore.Domain.Concrete
             }
         }
 
-        public DeliveryDetails Delete(int deliveryId)
+        public DeliveryDetails DeleteItem(int deliveryId)
         {
             DeliveryDetails dbEntry = context.DeliveryDetails.Find(deliveryId);
             if (dbEntry != null)

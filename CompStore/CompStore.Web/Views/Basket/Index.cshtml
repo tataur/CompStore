@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var line in Model.ShoppingList.Lines)
+        @foreach (var line in Model.ProductList.Lines)
         {
             <tr>
                 <td class="text-center">@line.Quantity</td>
@@ -33,7 +33,7 @@
                 <td>
                     @using (Html.BeginForm("RemoveFromList", "Basket"))
                     {
-                        @Html.Hidden("CompId", line.Comp.CompId)
+                        @Html.Hidden("CompId", line.Comp.Id)
                         @Html.HiddenFor(x => x.ReturnUrl)
                         <input class="btn btn-sm btn-warning" type="submit" value="Удалить" />
                     }
@@ -45,7 +45,7 @@
         <tr>
             <td colspan="3" class="text-right">Итого:</td>
             <td class="text-right">
-                @Model.ShoppingList.ComputeTotalValue().ToString("# руб")
+                @Model.ProductList.TotalValue().ToString("# руб")
             </td>
         </tr>
     </tfoot>
@@ -53,7 +53,7 @@
 
 <div class="text-center">
     <a class="btn btn-primary" href="@Model.ReturnUrl">Продолжить покупки</a>
-    @if (Model.ShoppingList.ComputeTotalValue() != 0)
+    @if (Model.ProductList.TotalValue() != 0)
     {
         @Html.ActionLink("Оформить заказ", "Checkout", null, new { @class = "btn btn-primary" })
     }

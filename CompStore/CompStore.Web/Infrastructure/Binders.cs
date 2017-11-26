@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using CompStore.Domain.Entities;
+using CompStore.Domain.Concrete;
 
 namespace CompStore.Web.Infrastructure.Binders
 {
@@ -7,18 +7,17 @@ namespace CompStore.Web.Infrastructure.Binders
     {
         private const string sessionKey = "ShoppingList";
 
-        public object BindModel(ControllerContext controllerContext,
-            ModelBindingContext bindingContext)
+        public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            ShoppingList shoppingList = null;
+            ProductList shoppingList = null;
             if (controllerContext.HttpContext.Session != null)
             {
-                shoppingList = (ShoppingList)controllerContext.HttpContext.Session[sessionKey];
+                shoppingList = (ProductList)controllerContext.HttpContext.Session[sessionKey];
             }
 
             if (shoppingList == null)
             {
-                shoppingList = new ShoppingList();
+                shoppingList = new ProductList();
                 if (controllerContext.HttpContext.Session != null)
                 {
                     controllerContext.HttpContext.Session[sessionKey] = shoppingList;

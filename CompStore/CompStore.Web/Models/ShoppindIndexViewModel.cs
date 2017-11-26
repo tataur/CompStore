@@ -1,10 +1,10 @@
-﻿using CompStore.Domain.Entities;
+﻿using CompStore.Domain.Concrete;
 
 namespace CompStore.Web.Models
 {
     public class ShoppingIndexViewModel
     {
-        public ShoppingList ShoppingList { get; set; }
+        public ProductList ProductList { get; set; }
         public string ReturnUrl { get; set; }
     }
 }

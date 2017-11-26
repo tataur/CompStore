@@ -1,5 +1,6 @@
 ﻿using CompStore.Domain.Abstract;
 using CompStore.Domain.Entities;
+using CompStore.Domain.Concrete;
 using CompStore.Web.Models;
 using System;
 using System.Linq;
@@ -13,11 +14,11 @@ namespace CompStore.Web.Controllers
         private ICommonRepository<DeliveryDetails> deliveryRepository;
         private IOrderHandler orderHandler;
 
-        public ViewResult Index(ShoppingList shoppingList, string returnUrl)
+        public ViewResult Index(ProductList productList, string returnUrl)
         {
             return View(new ShoppingIndexViewModel
             {
-                ShoppingList = shoppingList,
+                ProductList = productList,
                 ReturnUrl = returnUrl
             });
         }
@@ -34,9 +35,9 @@ namespace CompStore.Web.Controllers
         }
 
         [HttpPost]
-        public ViewResult Checkout(ShoppingList shoppingList, DeliveryDetails deliveryDetails)
+        public ViewResult Checkout(ProductList productList, DeliveryDetails deliveryDetails)
         {
-            if (shoppingList.Lines.Count() == 0)
+            if (productList.Lines.Count() == 0)
             {
                 ModelState.AddModelError("", "Корзина пуста");
             }
@@ -44,29 +45,24 @@ namespace CompStore.Web.Controllers
             if (ModelState.IsValid)
             {
                 deliveryRepository.SaveChanges(deliveryDetails);
-                foreach (var item in shoppingList.Lines)
+                foreach (var item in productList.Lines)
                 {
-                    var deliveryLine = new OrderLine
+                    var orderLine = new OrderLine
                     {
                         Id = Guid.NewGuid(),
-                        CompId = item.Comp.CompId,
+                        CompId = item.Comp.Id,
                         Quantity = item.Quantity,
                         DeliveryDetailsId = deliveryDetails.Id,
                         Status = OrderStatus.Wait
                     };
+                    productList.AddToDB(orderLine, deliveryDetails);
                 }
 
-                /*записать в базу => передать обратчику
-                 
-                class DeliveryDetails
-                
-                class DeliveryDetailsForEmployee 
-                CompId, DeliveryId, Quantity
-                
-                */
+                // записать в базу => передать обратчику          
 
-                orderHandler.HandleOrder(shoppingList, deliveryDetails);
-                shoppingList.Clear();
+                //orderHandler.HandleOrder(productList, deliveryDetails);
+
+                productList.Clear();
                 return View("OK");
             }
             else
@@ -75,32 +71,32 @@ namespace CompStore.Web.Controllers
             }
         }
 
-        public RedirectToRouteResult AddToList(ShoppingList shoppingList, Guid compId, string returnUrl)
+        public RedirectToRouteResult AddToList(ProductList productList, Guid Id, string returnUrl)
         {
-            Comp comp = compRepository.Items.FirstOrDefault(c => c.CompId == compId);
+            Comp comp = compRepository.AllItems.FirstOrDefault(c => c.Id == Id);
 
             if (comp != null && comp.Quantity != 0)
             {
-                shoppingList.AddItem(comp, 1);
+                productList.AddItem(comp, 1);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoveFromList(ShoppingList shoppingList, Guid compId, string returnUrl)
+        public RedirectToRouteResult RemoveFromList(ProductList productList, Guid compId, string returnUrl)
         {
-            Comp comp = compRepository.Items.FirstOrDefault(c => c.CompId == compId);
+            Comp comp = compRepository.AllItems.FirstOrDefault(c => c.Id == compId);
 
             if (comp != null)
             {
-                shoppingList.RemoveLine(comp);
+                productList.RemoveLine(comp);
             }
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public PartialViewResult Summary(ShoppingList shoppingList)
+        public PartialViewResult Summary(ProductList productList)
         {
-            return PartialView(shoppingList);
+            return PartialView(productList);
         }
     }
 }

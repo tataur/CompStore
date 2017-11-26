@@ -17,7 +17,7 @@ namespace CompStore.Web.Controllers
 
         public ViewResult Index()
         {
-            return View(repository.Items);
+            return View(repository.AllItems);
         }
 
         public ViewResult Create()
@@ -27,7 +27,7 @@ namespace CompStore.Web.Controllers
 
         public ViewResult Edit(System.Guid compId)
         {
-            Comp comp = repository.Items.FirstOrDefault(c => c.CompId == compId);
+            Comp comp = repository.AllItems.FirstOrDefault(c => c.Id == compId);
             return View(comp);
         }
 
@@ -49,7 +49,7 @@ namespace CompStore.Web.Controllers
         [HttpPost]
         public ActionResult Delete(int compId)
         {
-            Comp deletedComp = repository.Delete(compId);
+            Comp deletedComp = repository.DeleteItem(compId);
             if (deletedComp != null)
             {
                 TempData["message"] = string.Format("Товар \"{0}\" был удален", deletedComp.Name);

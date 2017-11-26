@@ -5,8 +5,8 @@ namespace CompStore.Domain.Abstract
 {
     public interface ICommonRepository<T>
     {
-        IEnumerable<T> Items { get; }
+        IEnumerable<T> AllItems { get; }
         void SaveChanges(T comp);
-        T Delete(int compId);
+        T DeleteItem(int compId);
     }
 }

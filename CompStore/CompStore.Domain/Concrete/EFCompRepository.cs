@@ -8,32 +8,34 @@ namespace CompStore.Domain.Concrete
     {
         EFDbContext context = new EFDbContext();
 
-        public IEnumerable<Comp> Items
+        public IEnumerable<Comp> AllItems
         {
             get { return context.Computers; }
         }
 
         public void SaveChanges(Comp comp)
         {
-            if (comp.CompId == null)
+            if (comp.Id == null)
             {
                 context.Computers.Add(comp);
             }
             else
             {
-                Comp dbEntry = context.Computers.Find(comp.CompId);
+                Comp dbEntry = context.Computers.Find(comp.Id);
                 if (dbEntry != null)
                 {
+                    dbEntry.FillCommonFields();
                     dbEntry.Name = comp.Name;
                     dbEntry.Description = comp.Description;
                     dbEntry.Price = comp.Price;
                     dbEntry.Category = comp.Category;
+                    dbEntry.Quantity = comp.Quantity;
                 }
                 context.SaveChanges();
             }
         }
 
-        public Comp Delete(int compId)
+        public Comp DeleteItem(int compId)
         {
             Comp dbEntry = context.Computers.Find(compId);
             if (dbEntry != null)
