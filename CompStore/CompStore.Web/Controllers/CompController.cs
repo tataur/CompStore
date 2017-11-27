@@ -4,24 +4,20 @@ using CompStore.Domain.Abstract;
 using CompStore.Web.Models;
 using System;
 using CompStore.Domain.Entities;
+using CompStore.Domain.Concrete;
 
 namespace CompStore.Web.Controllers
 {
     public class CompController : Controller
     {
-        private ICommonRepository<Comp> repository;
+        private readonly EFDbContext context = new EFDbContext();
         public int pageSize = 5;
-
-        public CompController(ICommonRepository<Comp> repo)
-        {
-            repository = repo;
-        }
 
         public ViewResult List(string category, int page = 1)
         {
             CompListViewModel model = new CompListViewModel
             {
-                Computers = repository.AllItems
+                Computers = context.Computers
                 .Where(comp => comp.Category == null || comp.Category == category)
                 .OrderBy(comp => comp.Id)
                 .Skip((page - 1) * pageSize)
@@ -30,7 +26,7 @@ namespace CompStore.Web.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = category == null ? repository.AllItems.Count() : repository.AllItems.Where(comp => comp.Category == category).Count()
+                    TotalItems = category == null ? context.Computers.Count() : context.Computers.Where(comp => comp.Category == category).Count()
                 },
                 CurrentCategory = category
             };
@@ -39,7 +35,7 @@ namespace CompStore.Web.Controllers
 
         public ViewResult Details(Guid id)
         {
-            var model = repository.AllItems.FirstOrDefault(c => c.Id == id);
+            var model = context.Computers.FirstOrDefault(c => c.Id == id);
 
             return View(model);
         }

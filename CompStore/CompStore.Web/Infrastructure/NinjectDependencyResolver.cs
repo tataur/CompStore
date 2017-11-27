@@ -32,6 +32,9 @@ namespace CompStore.Web.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<ICommonRepository<Comp>>().To<EFCompRepository>();
+            kernel.Bind<ICommonRepository<DeliveryDetails>>().To<EFDeliveryRepository>();
+            kernel.Bind<ICommonRepository<OrderLine>>().To<EFOrderRepository>();
+
             EmailSettings emailSettings = new EmailSettings
             {
                 WriteAsFile = bool.Parse(ConfigurationManager

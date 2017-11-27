@@ -12,13 +12,13 @@
         <h3>Редактирование «@Model.Name»</h3>
     </div>
 
-    @using (Html.BeginForm("Edit", "Admin"))
+    @using (Html.BeginForm("EditComputer", "Admin"))
     {
         <div class="panel-body">
-            @Html.HiddenFor(m => m.CompId)
+            @Html.HiddenFor(m => m.Id)
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
-                if (property.PropertyName != "CompId")
+                if (property.PropertyName != "Id")
                 {
                     <div class="form-group">
                         <label>@(property.DisplayName ?? property.PropertyName)</label>
@@ -39,7 +39,7 @@
         </div>
         <div class="panel-footer">
             <input type="submit" value="Сохранить" class="btn btn-primary" />
-            @Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new
+            @Html.ActionLink("Отменить изменения и вернуться к списку", "Computers", null, new
        {
            @class = "btn btn-default"
        })

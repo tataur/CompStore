@@ -3,30 +3,26 @@ using CompStore.Domain.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 using CompStore.Domain.Entities;
+using CompStore.Domain.Concrete;
 
 namespace CompStore.Web.Controllers
 {
     public class NavigationController : Controller
     {
-        private ICommonRepository<Comp> repository;
-
-        public NavigationController(ICommonRepository<Comp> repo)
-        {
-            repository = repo;
-        }
+        private readonly EFDbContext context = new EFDbContext();
 
         public PartialViewResult Menu(string category = null)
         {
             ViewBag.SelectedCategory = category;
 
-            IEnumerable<string> categories = repository.AllItems.Select(comp => comp.Category).Distinct().OrderBy(c => c);
+            IEnumerable<string> categories = context.Computers.Select(comp => comp.Category).Distinct().OrderBy(c => c);
             return PartialView(categories);
         }
 
         public PartialViewResult MenuMobile(string category = null, bool isHorizontal = true)
         {
             ViewBag.SelectedCategory = category;
-            IEnumerable<string> categories = repository.AllItems
+            IEnumerable<string> categories = context.Computers
                 .Select(comp => comp.Category)
                 .Distinct()
                 .OrderBy(x => x);

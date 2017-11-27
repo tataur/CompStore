@@ -18,7 +18,7 @@ namespace CompStore.Domain.Entities
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Введите адрес")]
-        public string Line { get; set; }
+        public string Street { get; set; }
 
         [Required(ErrorMessage = "Введите страну")]
         public string Country { get; set; }

@@ -24,10 +24,12 @@
 
     <h3>Адрес доставки</h3>
     <div class="form-group">
+        <label>Улица:</label>
+        @Html.TextBoxFor(x => x.Street, new { @class = "form-control" })
         <label>Страна:</label>
         @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
         <label>Город:</label>
         @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
     </div>
-
+    <input type="submit" value="OK" class="btn btn-primary" />
 }

@@ -2,9 +2,8 @@
 
 namespace CompStore.Domain.Entities
 {
-    public class OrderLine
+    public class OrderLine : CommonEntity
     {
-        public Guid Id { get; set; }
         public Guid DeliveryDetailsId { get; set; }
         public Guid CompId { get; set; }
         public int Quantity { get; set; }

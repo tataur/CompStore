@@ -10,9 +10,7 @@ namespace CompStore.Web.Controllers
 {
     public class BasketController : Controller
     {
-        private ICommonRepository<Comp> compRepository;
-        private ICommonRepository<DeliveryDetails> deliveryRepository;
-        private IOrderHandler orderHandler;
+        private readonly EFDbContext context = new EFDbContext(); 
 
         public ViewResult Index(ProductList productList, string returnUrl)
         {
@@ -21,12 +19,6 @@ namespace CompStore.Web.Controllers
                 ProductList = productList,
                 ReturnUrl = returnUrl
             });
-        }
-
-        public BasketController(ICommonRepository<Comp> cRepo, IOrderHandler handler)
-        {
-            compRepository = cRepo;
-            orderHandler = handler;
         }
 
         public ViewResult Checkout()
@@ -44,7 +36,8 @@ namespace CompStore.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                deliveryRepository.SaveChanges(deliveryDetails);
+                deliveryDetails.FillCommonFields();
+                context.DeliveryDetails.Add(deliveryDetails);
                 foreach (var item in productList.Lines)
                 {
                     var orderLine = new OrderLine
@@ -55,11 +48,13 @@ namespace CompStore.Web.Controllers
                         DeliveryDetailsId = deliveryDetails.Id,
                         Status = OrderStatus.Wait
                     };
-                    productList.AddToDB(orderLine, deliveryDetails);
+                    orderLine.FillCommonFields();
+                    orderLine.Status = OrderStatus.Wait;
+                    context.OrderLines.Add(orderLine);
                 }
 
                 // записать в базу => передать обратчику          
-
+                context.SaveChanges();
                 //orderHandler.HandleOrder(productList, deliveryDetails);
 
                 productList.Clear();
@@ -73,7 +68,7 @@ namespace CompStore.Web.Controllers
 
         public RedirectToRouteResult AddToList(ProductList productList, Guid Id, string returnUrl)
         {
-            Comp comp = compRepository.AllItems.FirstOrDefault(c => c.Id == Id);
+            Comp comp = context.Computers.FirstOrDefault(c => c.Id == Id);
 
             if (comp != null && comp.Quantity != 0)
             {
@@ -84,7 +79,7 @@ namespace CompStore.Web.Controllers
 
         public RedirectToRouteResult RemoveFromList(ProductList productList, Guid compId, string returnUrl)
         {
-            Comp comp = compRepository.AllItems.FirstOrDefault(c => c.Id == compId);
+            Comp comp = context.Computers.FirstOrDefault(c => c.Id == compId);
 
             if (comp != null)
             {

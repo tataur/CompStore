@@ -10,21 +10,21 @@ namespace CompStore.Domain.Concrete
 
         public IEnumerable<OrderLine> AllItems
         {
-            get { return context.OrderLine; }
+            get { return context.OrderLines; }
         }
 
         public void SaveChanges(OrderLine order)
         {
             if (order.Id == null)
             {
-                context.OrderLine.Add(order);
+                context.OrderLines.Add(order);
             }
             else
             {
-                OrderLine dbEntry = context.OrderLine.Find(order.Id);
+                OrderLine dbEntry = context.OrderLines.Find(order.Id);
                 if (dbEntry != null)
                 {
-                    dbEntry.Id = order.Id;
+                    dbEntry.FillCommonFields();
                     dbEntry.CompId = order.CompId;
                     dbEntry.DeliveryDetailsId = order.DeliveryDetailsId;
                     dbEntry.Quantity = order.Quantity;
@@ -36,10 +36,10 @@ namespace CompStore.Domain.Concrete
 
         public OrderLine DeleteItem(int orderId)
         {
-            OrderLine dbEntry = context.OrderLine.Find(orderId);
+            OrderLine dbEntry = context.OrderLines.Find(orderId);
             if (dbEntry != null)
             {
-                context.OrderLine.Remove(dbEntry);
+                context.OrderLines.Remove(dbEntry);
                 context.SaveChanges();
             }
             return dbEntry;

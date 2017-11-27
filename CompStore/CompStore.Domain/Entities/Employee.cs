@@ -24,6 +24,12 @@ namespace CompStore.Domain.Entities
 
         [Display(Name = "Статус")]
         public Status Status { get; set; }
+
+        public string GetFullName()
+        {
+            string fullName = SecondName + " " + FirstName;
+            return fullName;
+        }
     }
 
     public enum Status

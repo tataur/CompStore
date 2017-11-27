@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompStore.Domain", "CompSto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompStore.Web", "CompStore.Web\CompStore.Web.csproj", "{1A93B047-D53A-4195-8FEF-26985B0909D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompStore.OrderHandler", "CompStore.OrderHandler\CompStore.OrderHandler.csproj", "{C6937FA2-FB55-4335-80C2-9F749A5E4F65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1A93B047-D53A-4195-8FEF-26985B0909D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A93B047-D53A-4195-8FEF-26985B0909D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A93B047-D53A-4195-8FEF-26985B0909D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6937FA2-FB55-4335-80C2-9F749A5E4F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6937FA2-FB55-4335-80C2-9F749A5E4F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6937FA2-FB55-4335-80C2-9F749A5E4F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6937FA2-FB55-4335-80C2-9F749A5E4F65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

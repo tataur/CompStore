@@ -49,7 +49,7 @@ namespace CompStore.Domain.Concrete
                     .AppendLine("Доставка:")
                     .AppendLine(deliveryDetails.FirstName)
                     .AppendLine(deliveryDetails.SecondName)
-                    .AppendLine(deliveryDetails.Line)
+                    .AppendLine(deliveryDetails.Street)
                     .AppendLine(deliveryDetails.Country)
                     .AppendLine(deliveryDetails.City)
                     .AppendLine(" ");

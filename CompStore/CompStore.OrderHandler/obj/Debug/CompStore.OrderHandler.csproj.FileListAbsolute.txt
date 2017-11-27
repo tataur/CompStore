@@ -1,0 +1,6 @@
+C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.OrderHandler\bin\Debug\CompStore.OrderHandler.dll
+C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.OrderHandler\bin\Debug\CompStore.OrderHandler.pdb
+C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.OrderHandler\obj\Debug\CompStore.OrderHandler.csprojResolveAssemblyReference.cache
+C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.OrderHandler\obj\Debug\CompStore.OrderHandler.csproj.CoreCompileInputs.cache
+C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.OrderHandler\obj\Debug\CompStore.OrderHandler.dll
+C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.OrderHandler\obj\Debug\CompStore.OrderHandler.pdb

@@ -1,4 +1,3 @@
-C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\ApplicationInsights.config
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\CompStore.Web.dll.config
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\CompStore.Web.dll
@@ -28,10 +27,10 @@ C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\System.Web
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\System.Web.WebPages.Razor.dll
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\WebActivatorEx.dll
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\WebGrease.dll
-C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\EntityFramework.dll
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\CompStore.Domain.pdb
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\CompStore.Domain.dll.config
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.Web.Common.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.Web.Common.WebHost.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Ninject.Web.Mvc.xml
@@ -49,7 +48,6 @@ C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Microsoft.
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\Microsoft.AI.Web.xml
-C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\bin\EntityFramework.xml
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\obj\Debug\CompStore.Web.csprojResolveAssemblyReference.cache
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\obj\Debug\CompStore.Web.csproj.CoreCompileInputs.cache
 C:\Users\Sveta\Documents\GitHub\CompStore\CompStore\CompStore.Web\obj\Debug\CompStore.Web.dll

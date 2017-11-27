@@ -27,11 +27,11 @@ namespace CompStore.Domain.Concrete
                     dbEntry.FillCommonFields();
                     dbEntry.FirstName = delivery.FirstName;
                     dbEntry.SecondName = delivery.SecondName;
+                    dbEntry.Street = delivery.Street;
                     dbEntry.City = delivery.City;
                     dbEntry.Country = delivery.Country;
                     dbEntry.Email = delivery.Email;
                     dbEntry.PhoneNumber = delivery.PhoneNumber;
-                    dbEntry.Line = delivery.Line;
                 }
                 context.SaveChanges();
             }

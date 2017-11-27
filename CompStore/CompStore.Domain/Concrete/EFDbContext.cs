@@ -7,7 +7,8 @@ namespace CompStore.Domain.Concrete
     {
         public DbSet<Comp> Computers { get; set; }
         public DbSet<DeliveryDetails> DeliveryDetails { get; set; }
-        public DbSet<OrderLine> OrderLine { get; set; }
+        public DbSet<OrderLine> OrderLines { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
