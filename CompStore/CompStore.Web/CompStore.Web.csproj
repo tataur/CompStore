@@ -249,8 +249,16 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CompStore.Domain\CompStore.Domain.csproj">
+    <ProjectReference Include="..\CompStore.BLL\CompStore.BLL.csproj">
+      <Project>{310C6111-988C-4AFD-98FA-775DFD6638D7}</Project>
+      <Name>CompStore.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CompStore.DAL\CompStore.DAL.csproj">
       <Project>{e2afde7d-39b1-4b1c-b317-5340470e6b6c}</Project>
+      <Name>CompStore.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CompStore.Domain\CompStore.Domain.csproj">
+      <Project>{708ea51c-04b4-4ec0-a1a8-ad083396a753}</Project>
       <Name>CompStore.Domain</Name>
     </ProjectReference>
   </ItemGroup>

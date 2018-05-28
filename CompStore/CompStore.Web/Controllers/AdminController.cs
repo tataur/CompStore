@@ -1,16 +1,15 @@
 ﻿using System.Web.Mvc;
-using CompStore.Domain.Abstract;
-using CompStore.Domain.Entities;
 using System.Linq;
-using CompStore.Domain.Concrete;
 using System;
+using CompStore.DAL.Context;
+using CompStore.Domain.Entities;
 
 namespace CompStore.Web.Controllers
 {
     [Authorize]
     public class AdminController : Controller
     {
-        private readonly EFDbContext context = new EFDbContext();
+        private readonly EFDbContext _context = new EFDbContext();
 
         public ViewResult Index()
         {
@@ -19,12 +18,12 @@ namespace CompStore.Web.Controllers
 
         public ViewResult Computers()
         {
-            return View(context.Computers);
+            return View(_context.Computers);
         }
 
         public ViewResult Employees()
         {
-            return View(context.Employees);
+            return View(_context.Employees);
         }
 
         public ViewResult CreateComputer()
@@ -39,7 +38,7 @@ namespace CompStore.Web.Controllers
 
         public ViewResult EditComputer(Guid Id)
         {
-            Comp comp = context.Computers.FirstOrDefault(c => c.Id == Id);
+            Comp comp = _context.Computers.FirstOrDefault(c => c.Id == Id);
             return View(comp);
         }
 
@@ -48,12 +47,12 @@ namespace CompStore.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var compExist = context.Computers.FirstOrDefault(c => c.Id == comp.Id);
+                var compExist = _context.Computers.FirstOrDefault(c => c.Id == comp.Id);
                 if (compExist == null)
                 {
                     comp.FillCommonFields();
-                    context.Computers.Add(comp);
-                    context.SaveChanges();
+                    _context.Computers.Add(comp);
+                    _context.SaveChanges();
                     TempData["message"] = string.Format("Изменения \"{0}\" были сохранены", comp.Name);
                 }
                 else
@@ -63,9 +62,10 @@ namespace CompStore.Web.Controllers
                     compExist.Quantity = comp.Quantity;
                     compExist.Category = comp.Category;
                     compExist.Description = comp.Description;
-                    context.SaveChanges();
+                    _context.SaveChanges();
                     TempData["message"] = string.Format("Изменения \"{0}\" были сохранены", comp.Name);
                 }
+
                 return RedirectToAction("Computers");
             }
             else
@@ -76,7 +76,7 @@ namespace CompStore.Web.Controllers
 
         public ViewResult EditEmployee(Guid Id)
         {
-            Employee employee = context.Employees.FirstOrDefault(c => c.Id == Id);
+            Employee employee = _context.Employees.FirstOrDefault(c => c.Id == Id);
             return View(employee);
         }
 
@@ -85,12 +85,12 @@ namespace CompStore.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var employeeExist = context.Employees.FirstOrDefault(c => c.Id == employee.Id);
+                var employeeExist = _context.Employees.FirstOrDefault(c => c.Id == employee.Id);
                 if (employeeExist == null)
                 {
                     employee.FillCommonFields();
-                    context.Employees.Add(employee);
-                    context.SaveChanges();
+                    _context.Employees.Add(employee);
+                    _context.SaveChanges();
                     TempData["message"] = string.Format("Изменения \"{0}\" были сохранены", employee.GetFullName());
                 }
                 else
@@ -100,9 +100,10 @@ namespace CompStore.Web.Controllers
                     employeeExist.Salary = employee.Salary;
                     employeeExist.Category = employee.Category;
                     employeeExist.Status = employee.Status;
-                    context.SaveChanges();
+                    _context.SaveChanges();
                     TempData["message"] = string.Format("Изменения \"{0}\" были сохранены", employee.GetFullName());
                 }
+
                 return RedirectToAction("Employees");
             }
             else
@@ -114,24 +115,26 @@ namespace CompStore.Web.Controllers
         [HttpPost]
         public ActionResult DeleteComputer(Guid Id)
         {
-            Comp deletedComp = context.Computers.FirstOrDefault(c=>c.Id == Id);
+            Comp deletedComp = _context.Computers.FirstOrDefault(c => c.Id == Id);
             if (deletedComp != null)
             {
-                context.Computers.Remove(deletedComp);
+                _context.Computers.Remove(deletedComp);
                 TempData["message"] = string.Format("Товар \"{0}\" был удален", deletedComp.Name);
             }
+
             return RedirectToAction("Computers");
         }
 
         [HttpPost]
         public ActionResult DeleteEmployee(Guid Id)
         {
-            Employee deletedEmployee = context.Employees.FirstOrDefault(e => e.Id == Id);
+            Employee deletedEmployee = _context.Employees.FirstOrDefault(e => e.Id == Id);
             if (deletedEmployee != null)
             {
-                context.Employees.Remove(deletedEmployee);
+                _context.Employees.Remove(deletedEmployee);
                 TempData["message"] = string.Format("Товар \"{0}\" был удален", deletedEmployee.GetFullName());
             }
+
             return RedirectToAction("Employees");
         }
     }

@@ -15,7 +15,7 @@ namespace CompStore.Web
                 {
                     controller = "Comp",
                     action = "List",
-                    category = (string)null,
+                    category = (string) null,
                     page = 1
                 }
             );
@@ -23,19 +23,19 @@ namespace CompStore.Web
             routes.MapRoute(
                 name: null,
                 url: "Page{page}",
-                defaults: new { controller = "Comp", action = "List", category = (string)null },
-                constraints: new { page = @"\d+" }
+                defaults: new {controller = "Comp", action = "List", category = (string) null},
+                constraints: new {page = @"\d+"}
             );
 
             routes.MapRoute(null,
                 "{category}",
-                new { controller = "Comp", action = "List", page = 1 }
+                new {controller = "Comp", action = "List", page = 1}
             );
 
             routes.MapRoute(null,
                 "{category}/Page{page}",
-                new { controller = "Comp", action = "List" },
-                new { page = @"\d+" }
+                new {controller = "Comp", action = "List"},
+                new {page = @"\d+"}
             );
 
             routes.MapRoute(null, "{controller}/{action}");

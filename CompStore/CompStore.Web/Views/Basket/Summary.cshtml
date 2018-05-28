@@ -1,15 +1,14 @@
-﻿
-@model CompStore.Domain.Concrete.ProductList
+﻿@model CompStore.Domain.Models.ProductList
 
 <div class="navbar-right hidden-xs">
     @if (Model.TotalValue() != 0)
     {
-        @Html.ActionLink("Заказать", "Index", "Basket", new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn-default navbar-btn" })
+        @Html.ActionLink("Заказать", "Index", "Basket", new {returnUrl = Request.Url.PathAndQuery}, new {@class = "btn btn-default navbar-btn"})
     }
 </div>
 
 <div class="navbar-right visible-xs">
-    <a href=@Url.Action("Index", "Basket", new { returnUrl = Request.Url.PathAndQuery })
+    <a href=@Url.Action("Index", "Basket", new {returnUrl = Request.Url.PathAndQuery})
        class="btn btn-default navbar-btn">
         <span class="glyphicon glyphicon-shopping-cart"></span>
     </a>
@@ -18,5 +17,7 @@
 <div class="navbar-text navbar-right">
     <b class="hidden-xs">Корзина</b>
     @if (Model.TotalValue() != 0)
-    { @Model.TotalValue().ToString("# руб") }
+    {
+        @Model.TotalValue().ToString("# руб")
+    }
 </div>

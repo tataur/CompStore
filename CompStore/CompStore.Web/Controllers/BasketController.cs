@@ -1,16 +1,16 @@
-﻿using CompStore.Domain.Abstract;
-using CompStore.Domain.Entities;
-using CompStore.Domain.Concrete;
-using CompStore.Web.Models;
+﻿using CompStore.Web.Models;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using CompStore.DAL.Context;
+using CompStore.Domain.Entities;
+using CompStore.Domain.Models;
 
 namespace CompStore.Web.Controllers
 {
     public class BasketController : Controller
     {
-        private readonly EFDbContext context = new EFDbContext(); 
+        private readonly EFDbContext _context = new EFDbContext();
 
         public ViewResult Index(ProductList productList, string returnUrl)
         {
@@ -37,7 +37,7 @@ namespace CompStore.Web.Controllers
             if (ModelState.IsValid)
             {
                 deliveryDetails.FillCommonFields();
-                context.DeliveryDetails.Add(deliveryDetails);
+                _context.DeliveryDetails.Add(deliveryDetails);
                 foreach (var item in productList.Lines)
                 {
                     var orderLine = new OrderLine
@@ -50,11 +50,11 @@ namespace CompStore.Web.Controllers
                     };
                     orderLine.FillCommonFields();
                     orderLine.Status = OrderStatus.Wait;
-                    context.OrderLines.Add(orderLine);
+                    _context.OrderLines.Add(orderLine);
                 }
 
                 // записать в базу => передать обратчику          
-                context.SaveChanges();
+                _context.SaveChanges();
                 //orderHandler.HandleOrder(productList, deliveryDetails);
 
                 productList.Clear();
@@ -68,25 +68,26 @@ namespace CompStore.Web.Controllers
 
         public RedirectToRouteResult AddToList(ProductList productList, Guid Id, string returnUrl)
         {
-            Comp comp = context.Computers.FirstOrDefault(c => c.Id == Id);
+            Comp comp = _context.Computers.FirstOrDefault(c => c.Id == Id);
 
             if (comp != null && comp.Quantity != 0)
             {
                 productList.AddItem(comp, 1);
             }
-            return RedirectToAction("Index", new { returnUrl });
+
+            return RedirectToAction("Index", new {returnUrl});
         }
 
         public RedirectToRouteResult RemoveFromList(ProductList productList, Guid compId, string returnUrl)
         {
-            Comp comp = context.Computers.FirstOrDefault(c => c.Id == compId);
+            Comp comp = _context.Computers.FirstOrDefault(c => c.Id == compId);
 
             if (comp != null)
             {
                 productList.RemoveLine(comp);
             }
 
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Index", new {returnUrl});
         }
 
         public PartialViewResult Summary(ProductList productList)

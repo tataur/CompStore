@@ -3,7 +3,7 @@
 <div class="well">
     <h3>
         @*<strong>@Model.Name</strong>*@
-        <strong>@Html.ActionLink(Model.Name, "Details", new { id = Model.Id }, null) </strong>
+        <strong>@Html.ActionLink(Model.Name, "Details", new {id = Model.Id}, null) </strong>
         <span class="pull-right label label-primary">@Model.Price.ToString("# руб")</span>
     </h3>
     @using (Html.BeginForm("AddToList", "Basket"))
@@ -11,7 +11,7 @@
         <div class="pull-right">
             @Html.HiddenFor(x => x.Id)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="Добавить в корзину" />
+            <input type="submit" class="btn btn-success" value="Добавить в корзину"/>
         </div>
     }
     @*<span class="img-circle"></span>*@

@@ -1,27 +1,24 @@
 ﻿using System.Web.Mvc;
-using CompStore.Domain.Concrete;
+using CompStore.Domain.Models;
 
 namespace CompStore.Web.Infrastructure.Binders
 {
     public class BasketModelBinder : IModelBinder
     {
-        private const string sessionKey = "ShoppingList";
+        private const string SessionKey = "ShoppingList";
 
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             ProductList shoppingList = null;
             if (controllerContext.HttpContext.Session != null)
             {
-                shoppingList = (ProductList)controllerContext.HttpContext.Session[sessionKey];
+                shoppingList = (ProductList) controllerContext.HttpContext.Session[SessionKey];
             }
 
             if (shoppingList == null)
             {
                 shoppingList = new ProductList();
-                if (controllerContext.HttpContext.Session != null)
-                {
-                    controllerContext.HttpContext.Session[sessionKey] = shoppingList;
-                }
+                controllerContext.HttpContext.Session[SessionKey] = shoppingList;
             }
 
             return shoppingList;

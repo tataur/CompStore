@@ -22,7 +22,7 @@
             {
                 <tr>
                     <td class="text-right">@item.Id</td>
-                    <td>@Html.ActionLink(item.Name, "EditComputer", new { item.Id })</td>
+                    <td>@Html.ActionLink(item.Name, "EditComputer", new {item.Id})</td>
                     <td class="text-right">@item.Price.ToString("# руб")</td>
                     <td class="text-right">@item.Quantity.ToString()</td>
                     <td class="text-center">
@@ -31,7 +31,7 @@
                             @Html.Hidden("Id", item.Id)
                             <input type="submit"
                                    class="btn btn-default btn-xs"
-                                   value="Удалить" />
+                                   value="Удалить"/>
                         }
                     </td>
                 </tr>
@@ -40,7 +40,7 @@
     </div>
     <div class="panel-footer">
         @Html.ActionLink("Добавить", "CreateComputer", null,
-            new { @class = "btn btn-default" })
-        @Html.ActionLink("Главная", "Index", null, new { @class = "btn btn-default" })
+            new {@class = "btn btn-default"})
+        @Html.ActionLink("Главная", "Index", null, new {@class = "btn btn-default"})
     </div>
 </div>

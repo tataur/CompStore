@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Ninject;
-using CompStore.Domain.Abstract;
-using CompStore.Domain.Concrete;
 using System.Configuration;
+using CompStore.BLL.Services;
+using CompStore.DAL.Repositories;
 using CompStore.Domain.Entities;
+using CompStore.Domain.Interfaces;
 
 namespace CompStore.Web.Infrastructure
 {
@@ -38,7 +39,7 @@ namespace CompStore.Web.Infrastructure
             EmailSettings emailSettings = new EmailSettings
             {
                 WriteAsFile = bool.Parse(ConfigurationManager
-                    .AppSettings["Email.WriteAsFile"] ?? "false")
+                                             .AppSettings["Email.WriteAsFile"] ?? "false")
             };
 
             kernel.Bind<IOrderHandler>().To<EmailOrderHandler>()

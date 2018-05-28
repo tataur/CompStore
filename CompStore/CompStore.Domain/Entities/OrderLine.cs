@@ -12,6 +12,10 @@ namespace CompStore.Domain.Entities
 
     public enum OrderStatus
     {
-        Wait, Work, WorkDone, Delivery, Done
+        Wait = 0,
+        Work = 1,
+        WorkDone = 2,
+        Delivery = 3,
+        Done = 4
     }
 }

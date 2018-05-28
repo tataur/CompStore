@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CompStore.Domain.Entities
 {
@@ -22,8 +20,7 @@ namespace CompStore.Domain.Entities
         [Range(0.01, double.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение")]
         public decimal Salary { get; set; }
 
-        [Display(Name = "Статус")]
-        public Status Status { get; set; }
+        [Display(Name = "Статус")] public Status Status { get; set; }
 
         public string GetFullName()
         {
@@ -34,11 +31,13 @@ namespace CompStore.Domain.Entities
 
     public enum Status
     {
-        Wait, Work
+        Wait,
+        Work
     }
 
     public enum Category
     {
-        Worker, Deliveryman
+        Worker,
+        Deliveryman
     }
 }

@@ -6,10 +6,11 @@ namespace CompStore.Web.Controllers
 {
     public class AccountController : Controller
     {
-        IAuthenticate authenticate;
+        private readonly IAuthenticate _authenticate;
+
         public AccountController(IAuthenticate auth)
         {
-            authenticate = auth;
+            _authenticate = auth;
         }
 
         [HttpGet]
@@ -23,7 +24,7 @@ namespace CompStore.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(authenticate.Authenticate(model.Login, model.Password))
+                if (_authenticate.Authenticate(model.Login, model.Password))
                 {
                     return Redirect(returnUrl ?? Url.Action("Index", "Admin"));
                 }

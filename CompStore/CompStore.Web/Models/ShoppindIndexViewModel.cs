@@ -1,4 +1,4 @@
-﻿using CompStore.Domain.Concrete;
+﻿using CompStore.Domain.Models;
 
 namespace CompStore.Web.Models
 {

@@ -1,20 +1,19 @@
-﻿
-@model IEnumerable<string>
+﻿@model IEnumerable<string>
 
 <div class="btn-group btn-group-sm btn-group-justified">
 
     @foreach (var link in Model)
     {
         @Html.RouteLink(link, new
-   {
-       controller = "Comp",
-       action = "List",
-       category = link,
-       page = 1
-   }, new
-   {
-       @class = "btn btn-default btn-sm"
-                    + (link == ViewBag.SelectedCategory ? " btn-primary" : "")
-   })
+        {
+            controller = "Comp",
+            action = "List",
+            category = link,
+            page = 1
+        }, new
+        {
+            @class = "btn btn-default btn-sm"
+                     + (link == ViewBag.SelectedCategory ? " btn-primary" : "")
+        })
     }
 </div>

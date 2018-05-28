@@ -1,8 +1,8 @@
-﻿using CompStore.Domain.Concrete;
-using CompStore.Web.Infrastructure.Binders;
+﻿using CompStore.Web.Infrastructure.Binders;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CompStore.Domain.Models;
 
 namespace CompStore.Web
 {
