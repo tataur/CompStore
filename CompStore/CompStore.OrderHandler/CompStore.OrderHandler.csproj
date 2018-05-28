@@ -40,8 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultOrderHandler.cs" />
+    <Compile Include="FirstCallOrderHandler.cs" />
     <Compile Include="IOrderHandler.cs" />
+    <Compile Include="DeliverOrderHandler.cs" />
+    <Compile Include="OrderManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CompStore.Domain\CompStore.Domain.csproj">
+      <Project>{708ea51c-04b4-4ec0-a1a8-ad083396a753}</Project>
+      <Name>CompStore.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

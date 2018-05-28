@@ -42,7 +42,7 @@ namespace CompStore.Web.Infrastructure
                                              .AppSettings["Email.WriteAsFile"] ?? "false")
             };
 
-            kernel.Bind<IOrderHandler>().To<EmailOrderHandler>()
+            kernel.Bind<IOldOrderHandler>().To<EmailOrderHandler>()
                 .WithConstructorArgument("settings", emailSettings);
 
             kernel.Bind<IAuthenticate>().To<FormAuthenticate>();

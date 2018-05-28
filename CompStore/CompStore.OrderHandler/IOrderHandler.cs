@@ -1,4 +1,5 @@
 ﻿using System;
+using CompStore.Domain.Entities;
 
 namespace CompStore.OrderHandler
 {
@@ -15,6 +16,8 @@ namespace CompStore.OrderHandler
         // после доставки изменить статус заказа и доставщика, (статус заказа Done, доставщика Wait) 
 
         // отправить сообщение заказчику
-        void SendMessage(Guid productListId, Guid deliveryDetailsId);
+        //void SendMessage(Guid productListId, Guid deliveryDetailsId);
+
+        bool Process(OrderData orderData);
     }
 }

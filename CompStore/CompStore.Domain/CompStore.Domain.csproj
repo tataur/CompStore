@@ -55,7 +55,7 @@
     <Compile Include="Entities\OrderData.cs" />
     <Compile Include="Entities\OrderLine.cs" />
     <Compile Include="Interfaces\ICommonRepository.cs" />
-    <Compile Include="Interfaces\IOrderHandler.cs" />
+    <Compile Include="Interfaces\IOldOrderHandler.cs" />
     <Compile Include="Models\ProductList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

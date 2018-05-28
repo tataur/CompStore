@@ -7,7 +7,7 @@ using CompStore.Domain.Models;
 
 namespace CompStore.BLL.Services
 {
-    public class EmailOrderHandler : IOrderHandler
+    public class EmailOrderHandler : IOldOrderHandler
     {
         private readonly EmailSettings _emailSettings;
 
